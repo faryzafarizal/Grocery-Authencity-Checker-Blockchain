@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>MYRantaian: Scan & Verify 🇲🇾</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: white;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin: 0.5rem 1rem;
+      color: #dc143c; /* Red */
+      text-align: center;
+    }
+    h1 small {
+      display: block;
+      font-size: 1rem;
+      color: #1e40af; /* Blue */
+    }
+    #scanner-container {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 90vw;
+      max-width: 400px;
+      text-align: center;
+      border: 4px solid #ffd700; /* Yellow border */
+    }
+    button {
+      background-color: #1e40af; /* Blue */
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 15px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #dc143c; /* Red */
+    }
+    #interactive {
+      margin: 0 auto;
+      width: 100%;
+      height: 150px;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    #interactive video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    #barcode-result, #origin-result {
+      font-size: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    #origin-result {
+      font-weight: 600;
+      color: #1e40af; /* Blue */
+      margin-top: 0.5rem;
+    }
+    .product-details {
+      text-align: left;
+      background-color: #fff8e1; /* Soft yellow background */
+      border-radius: 10px;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .product-details strong {
+      color: #dc143c; /* Red */
+    }
+  </style>
+</head>
+<body>
+  <h1>MYRantaian 🇲🇾<br><small>Scan & Verify Malaysian Products</small></h1>
+
+  <div id="scanner-container">
+    <button onclick="startScanner()">📷 Start Scan</button>
+    <div id="interactive" class="viewport"></div>
+    <p id="barcode-result">📦 Scan a product to check its origin</p>
+    <p id="origin-result"></p>
+    <div class="product-details" id="product-details" style="display: none;">
+      <p><strong>🧾 Product:</strong> <span id="product-name">ABC Chili Sauce</span></p>
+      <p><strong>🏭 Manufacturer:</strong> <span id="manufacturer">Kilang ABC Sdn Bhd</span></p>
+      <p><strong>🌍 Origin:</strong> <span id="origin-country">🇲🇾 Malaysia</span></p>
+      <p><strong>🔗 Verified:</strong> <span id="verification">✅ Blockchain Verified</span></p>
+      <p><strong>📦 Barcode:</strong> <span id="barcode-value">9551234567890</span></p>
+      <p><strong>📅 Manufacture Date:</strong> <span id="mfg-date">Jan 2025</span></p>
+      <p><strong>📜 Status:</strong> <span id="cert-status">Halal Certified ✅</span></p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="barcode-scanner.js"></script>
+  <script src="blockchain.js"></script>
+</body>
+</html>
