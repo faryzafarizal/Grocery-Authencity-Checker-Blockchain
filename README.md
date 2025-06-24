@@ -1,1 +1,1 @@
-# Grocery-Authencity-Checker-Blockchain
+# MYRantaian: Local Product Checker using Blockchain
